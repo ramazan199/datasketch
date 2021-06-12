@@ -1002,8 +1002,11 @@ if redis is not None:
             RedisListStorage.__init__(self, config, name=name)
 
         @staticmethod
+        
         def _get_items(r, k):
-            return r.smembers(k)
+            result = r.smembers(k)
+            r.connection_pool.disconnect()
+            return result
 
         def remove_val(self, key, val):
             redis_key = self.redis_key(key)
