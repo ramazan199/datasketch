@@ -1001,8 +1001,7 @@ if redis is not None:
         def __init__(self, config, name=None):
             RedisListStorage.__init__(self, config, name=name)
 
-        @staticmethod
-        
+        @staticmethod     
         def _get_items(r, k):
             result = r.smembers(k)
             r.connection_pool.disconnect()
