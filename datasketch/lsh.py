@@ -179,6 +179,7 @@ class MinHashLSH(object):
         if self.prepickle:
             key = pickle.dumps(key)
         if check_duplication and key in self.keys:
+            return
             raise ValueError("The given key already exists")
         Hs = [self._H(minhash.hashvalues[start:end])
                 for start, end in self.hashranges]
