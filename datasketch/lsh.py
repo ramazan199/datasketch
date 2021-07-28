@@ -235,6 +235,7 @@ class MinHashLSH(object):
         if self.prepickle:
             key = pickle.dumps(key)
         if key not in self.keys:
+            return
             raise ValueError("The given key does not exist")
         for H, hashtable in zip(self.keys[key], self.hashtables):
             hashtable.remove_val(H, key)
